@@ -1,4 +1,4 @@
-# 抽象圣经六件套 · chouxiangboy-peonpack
+# 抽象圣经四件套 · chouxiangboy-peonpack
 
 <p align="center">
   <img src="daodun.png" alt="我的刀盾" width="420" />
@@ -8,16 +8,21 @@
 >
 > A fan-made Chinese meme sound pack for [peon-ping](https://github.com/PeonPing/peon-ping).
 
-这是一个 [peon-ping](https://github.com/PeonPing/peon-ping) 音效包,当 Claude Code 启动、完成任务、报错、等待输入或你刷屏时,会随机播放"抽象圣经"里的六句经典:
+这是一个 [peon-ping](https://github.com/PeonPing/peon-ping) 音效包。默认**开箱即用的四件套**覆盖 Claude Code 最常触发的四类事件:
 
-| MP3            | 标签     | 触发事件          | 你会在什么时候听到                              |
-| -------------- | -------- | ----------------- | ----------------------------------------------- |
-| `waibibabo`    | 歪比巴卜 | `session.start`   | 会话开始 / Claude Code 刚启动                   |
-| `wodedaodun`   | 我的刀盾 | `task.complete`   | Claude 完成一个任务(与下者随机轮播)         |
-| `kukugaga`     | 咕咕嘎嘎 | `task.complete`   | 同上,完成时的另一种嘴替                       |
-| `bagayalu`     | 八嘎呀路 | `task.error`      | 任务执行报错                                    |
-| `bibilabu`     | 比比拉布 | `input.required`  | Claude 停下来等你输入/确认                      |
-| `bababoyi`     | 巴巴博一 | `user.spam`       | 你短时间内连续触发多次(默认 10s 内 3 次)     |
+| MP3            | 标签     | 触发事件          | 你会在什么时候听到                          |
+| -------------- | -------- | ----------------- | ------------------------------------------- |
+| `wodedaodun`   | 我的刀盾 | `task.complete`   | Claude 完成一个任务                         |
+| `bagayalu`     | 八嘎呀路 | `task.error`      | 任务执行报错                                |
+| `bibilabu`     | 比比拉布 | `input.required`  | Claude 停下来等你输入/确认                  |
+| `bababoyi`     | 巴巴博一 | `user.spam`       | 你短时间内连续触发多次(默认 10s 内 3 次) |
+
+另外额外附赠 **2 个 bonus 音效**(默认不挂载,按需接入,见下面「🎛️ 推荐搭配」):
+
+| MP3         | 标签     | 默认     | 适合场景                                   |
+| ----------- | -------- | -------- | ------------------------------------------ |
+| `waibibabo` | 歪比巴卜 | 未启用   | 会话开场白 / 启动 Claude Code 时念经       |
+| `kukugaga`  | 咕咕嘎嘎 | 未启用   | 和「我的刀盾」随机轮播 / 确认任务时响一声 |
 
 ---
 
@@ -78,6 +83,97 @@ peon packs list
 ```bash
 peon packs remove chouxiang_shengjing
 ```
+
+---
+
+## 🎛️ 推荐搭配(启用 bonus 音效)
+
+装完默认四件套后,`waibibabo` / `kukugaga` 两个 bonus 音效文件**已经在 `sounds/` 里**,但 `openpeon.json` 没挂载它们。想启用,只需编辑:
+
+```
+~/.claude/hooks/peon-ping/packs/chouxiang_shengjing/openpeon.json
+# 或 ~/.openpeon/packs/chouxiang_shengjing/openpeon.json
+```
+
+把下面任一片段**替换/追加**到对应 `categories` 下即可。
+
+> 🎲 小知识:peon-ping 对同一 category 下多个 sound 会**随机选一条播放**,所以把两个 mp3 并列写进 `sounds[]`,每次任务完成都会有惊喜。
+
+### 搭配 A · 随机双连击(最省事,推荐新手)
+
+让「我的刀盾」和「咕咕嘎嘎」交替出现,task.complete 不再单调:
+
+```json
+"task.complete": {
+  "sounds": [
+    {"file": "sounds/wodedaodun.mp3", "label": "我的刀盾", "sha256": ""},
+    {"file": "sounds/kukugaga.mp3",   "label": "咕咕嘎嘎", "sha256": ""}
+  ]
+}
+```
+
+### 搭配 B · 会话开场白
+
+每次启动 Claude Code 先念一句「歪比巴卜」定调:
+
+```json
+"session.start": {
+  "sounds": [
+    {"file": "sounds/waibibabo.mp3", "label": "歪比巴卜", "sha256": ""}
+  ]
+}
+```
+
+> 前提:`config.json` 里 `session.start: true`(peon-ping 默认就是开的)。
+
+### 搭配 C · 赛博老头全家桶(六音全开)
+
+把两个 bonus 全部接入,同时启用 `task.acknowledge`:
+
+```json
+"session.start": {
+  "sounds": [
+    {"file": "sounds/waibibabo.mp3", "label": "歪比巴卜", "sha256": ""}
+  ]
+},
+"task.acknowledge": {
+  "sounds": [
+    {"file": "sounds/kukugaga.mp3", "label": "咕咕嘎嘎", "sha256": ""}
+  ]
+},
+"task.complete": {
+  "sounds": [
+    {"file": "sounds/wodedaodun.mp3", "label": "我的刀盾", "sha256": ""}
+  ]
+}
+```
+
+还要去 `~/.claude/hooks/peon-ping/config.json` 把 `task.acknowledge` 打开:
+
+```json
+"categories": {
+  "task.acknowledge": true
+}
+```
+
+### 搭配 D · 权限弹窗双音随机
+
+如果你没开 `bypassPermissions`,经常看到"Do you want to allow ...?",可以让弹窗声音也有变化:
+
+```json
+"input.required": {
+  "sounds": [
+    {"file": "sounds/bibilabu.mp3",  "label": "比比拉布", "sha256": ""},
+    {"file": "sounds/waibibabo.mp3", "label": "歪比巴卜", "sha256": ""}
+  ]
+}
+```
+
+---
+
+## ♻️ 改完之后
+
+重启 peon-ping 的 hook(其实 peon-ping 每次调用都会重读 manifest,所以通常**什么都不用做**,下次事件触发就生效了)。如果你确实感觉没变化,可以强制 `peon packs use chouxiang_shengjing` 再触发一下,或重开一个 Claude Code 会话。
 
 ---
 
