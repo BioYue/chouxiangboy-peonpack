@@ -1,0 +1,31 @@
+{
+  "cesp_version": "1.0",
+  "name": "chouxiang_shengjing",
+  "display_name": "抽象圣经 四件套",
+  "version": "1.0.0",
+  "author": {"name": "custom", "github": ""},
+  "license": "Personal use only — fan-made compilation",
+  "language": "zh-CN",
+  "categories": {
+    "task.complete": {
+      "sounds": [
+        {"file": "sounds/wodedaodun.mp3", "label": "我的刀盾", "sha256": ""}
+      ]
+    },
+    "task.error": {
+      "sounds": [
+        {"file": "sounds/bagayalu.mp3", "label": "八嘎呀路", "sha256": ""}
+      ]
+    },
+    "input.required": {
+      "sounds": [
+        {"file": "sounds/bibilabu.mp3", "label": "比比拉布", "sha256": ""}
+      ]
+    },
+    "user.spam": {
+      "sounds": [
+        {"file": "sounds/bababoyi.mp3", "label": "巴巴博一", "sha256": ""}
+      ]
+    }
+  }
+}
