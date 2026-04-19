@@ -1,5 +1,9 @@
 # 抽象圣经四件套 · chouxiangboy-peonpack
 
+<p align="center">
+  <img src="daodun.png" alt="我的刀盾" width="420" />
+</p>
+
 > 给 Claude Code 装上一个"精神状态稳定"的中文音效苦工。
 >
 > A fan-made Chinese meme sound pack for [peon-ping](https://github.com/PeonPing/peon-ping).
