@@ -1,4 +1,4 @@
-# 抽象圣经四件套 · chouxiangboy-peonpack
+# 抽象圣经六件套 · chouxiangboy-peonpack
 
 <p align="center">
   <img src="daodun.png" alt="我的刀盾" width="420" />
@@ -8,14 +8,16 @@
 >
 > A fan-made Chinese meme sound pack for [peon-ping](https://github.com/PeonPing/peon-ping).
 
-这是一个 [peon-ping](https://github.com/PeonPing/peon-ping) 音效包,当 Claude Code 完成任务、报错、等待输入或你刷屏时,会随机播放"抽象圣经"里的四句经典:
+这是一个 [peon-ping](https://github.com/PeonPing/peon-ping) 音效包,当 Claude Code 启动、完成任务、报错、等待输入或你刷屏时,会随机播放"抽象圣经"里的六句经典:
 
-| MP3            | 标签     | 触发事件          | 你会在什么时候听到                          |
-| -------------- | -------- | ----------------- | ------------------------------------------- |
-| `wodedaodun`   | 我的刀盾 | `task.complete`   | Claude 完成一个任务                         |
-| `bagayalu`     | 八嘎呀路 | `task.error`      | 任务执行报错                                |
-| `bibilabu`     | 比比拉布 | `input.required`  | Claude 停下来等你输入/确认                  |
-| `bababoyi`     | 巴巴博一 | `user.spam`       | 你短时间内连续触发多次(默认 10s 内 3 次) |
+| MP3            | 标签     | 触发事件          | 你会在什么时候听到                              |
+| -------------- | -------- | ----------------- | ----------------------------------------------- |
+| `waibibabo`    | 歪比巴卜 | `session.start`   | 会话开始 / Claude Code 刚启动                   |
+| `wodedaodun`   | 我的刀盾 | `task.complete`   | Claude 完成一个任务(与下者随机轮播)         |
+| `kukugaga`     | 咕咕嘎嘎 | `task.complete`   | 同上,完成时的另一种嘴替                       |
+| `bagayalu`     | 八嘎呀路 | `task.error`      | 任务执行报错                                    |
+| `bibilabu`     | 比比拉布 | `input.required`  | Claude 停下来等你输入/确认                      |
+| `bababoyi`     | 巴巴博一 | `user.spam`       | 你短时间内连续触发多次(默认 10s 内 3 次)     |
 
 ---
 
@@ -290,6 +292,8 @@ chouxiangboy-peonpack/
 │   ├── bababoyi.mp3
 │   ├── bagayalu.mp3
 │   ├── bibilabu.mp3
+│   ├── kukugaga.mp3
+│   ├── waibibabo.mp3
 │   └── wodedaodun.mp3
 └── .gitignore
 ```

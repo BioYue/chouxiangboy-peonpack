@@ -1,15 +1,21 @@
 {
   "cesp_version": "1.0",
   "name": "chouxiang_shengjing",
-  "display_name": "抽象圣经 四件套",
-  "version": "1.0.0",
+  "display_name": "抽象圣经 六件套",
+  "version": "1.1.0",
   "author": {"name": "custom", "github": ""},
   "license": "Personal use only — fan-made compilation",
   "language": "zh-CN",
   "categories": {
+    "session.start": {
+      "sounds": [
+        {"file": "sounds/waibibabo.mp3", "label": "歪比巴卜", "sha256": ""}
+      ]
+    },
     "task.complete": {
       "sounds": [
-        {"file": "sounds/wodedaodun.mp3", "label": "我的刀盾", "sha256": ""}
+        {"file": "sounds/wodedaodun.mp3", "label": "我的刀盾", "sha256": ""},
+        {"file": "sounds/kukugaga.mp3",   "label": "咕咕嘎嘎", "sha256": ""}
       ]
     },
     "task.error": {
